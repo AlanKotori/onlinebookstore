@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/font.css">
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/index.css">
+    <script src="http://47.106.245.68/bs/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://47.106.245.68/bs/js/index.js"></script>
+</head>
+<body>
+    <h1>请确认您的订单信息</h1>
+    <div class="layui-card-body layui-table-body layui-table-main">
+    <table class="layui-table layui-form">
+        <thead>
+            <tr>
+                <th>uid</th>
+                <th>书名</th>
+                <th>书籍ID</th>
+                <th>收货地址</th>
+                <th>原价</th>
+                <th>促销价格</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= user[0].userid %></td>
+                <td><%= bookpage[0].bookname %></td>
+                <td><%= bookpage[0].id %> </td>
+                <td><%= user[0].userwhere %></td>
+                <td><%= bookpage[0].price %></td>
+                <td><%= bookpage[0].newprice %></td>
+                <td>
+                    <form method="POST" action="/buying/savegoods">
+                        <input type="hidden" name="userid" value="<%= user[0].userid %>" />
+                        <input type="hidden" name="bookname" value="<%= bookpage[0].bookname %>" />
+                        <input type="hidden" name="bookid" value="<%= bookpage[0].id %>" />
+                        <input type="hidden" name="buy_where" value="<%= user[0].userwhere %>" />
+                        <input type="hidden" name="buy_money" value="<%= bookpage[0].newprice %>" />
+                        <input type="hidden" name="cartid" value="<%= cartid %>" />
+                        <button type="submit" id="delete">确认购买</button>
+                      </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

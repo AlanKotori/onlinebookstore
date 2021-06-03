@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %> </title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <style>
+
+        .container {
+            margin-top: 10%;
+            width: 40%;
+        }
+    
+        .btn-primary {
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+    
+        .form-control {
+            margin-bottom: 4px;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <form action="/userbase/loginmessage" method="POST" class="layui-form">
+        <div class="container">
+            <h2>网上书店登陆系统</h2>
+            <div class="right-infp-name">
+                <input class="form-control" onkeyup="value=value.replace(/[^1234567890-]+/g,'')" type="text" name="userid" placeholder="请输入用户账号" maxlength="12" required="" value="" autocomplete="off">
+            </div>
+            <div class="right-infp-name">
+                <input type="password" class="form-control" name="userpasswd" placeholder="请输入密码" autocomplete="off" required="" value="">
+            </div>
+
+            <div class="right-infp-btn">
+                <button class="btn btn-lg  btn-block btn-success" type="submit">登录</button>
+            </div>
+        
+    </form>
+    <a href="/join">没有账号？点击注册</a>
+
+           </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+.body_item_top{
+    width: 90%;
+    height: auto;
+    margin-left: 3.5%;
+    background-color: khaki;
+}
+
+.body_item_center{
+    width: 90%;
+    height: 100px;
+    margin-left: 3.5%;
+    background-color: darkcyan;
+}
+
+.body_item_end{
+    width: 90%;
+    height: 100px;
+    margin-left: 3.5%;
+    background-color: pink;
+}
+
+.top_item_cover_picture{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(247, 120, 120);
+}
+
+.top_item_cover_picture_img{
+    width: 100%;
+    height: 100%;
+}

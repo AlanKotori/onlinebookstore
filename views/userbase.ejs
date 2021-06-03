@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/font.css">
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/index.css">
+    <script src="http://47.106.245.68/bs/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://47.106.245.68/bs/js/index.js"></script>
+</head>
+<body>
+    <h1>用户后台管理系统</h1>
+    <div class="layui-card-body layui-table-body layui-table-main">
+    <table class="layui-table layui-form">
+        <thead>
+            <tr>
+                <th>uid</th>
+                <th>用户名</th>
+                <th>邮箱</th>
+                <th>密码</th>
+                <th>权限</th>
+                <th>地址</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0 ; i < data.length ; i ++){ %>
+            <tr>
+                <td><%= data[i].userid %></td>
+                <td><%= data[i].username %></td>
+                <td><%= data[i].usermail %> </td>
+                <td><%= data[i].userpasswd %></td>
+                <td><%= data[i].userwho %></td>
+                <td><%= data[i].userwhere %></td>
+                <td>
+                    <form method="POST" action="/userbase/del">
+                        <input type="hidden" name="del" value="<%= data[i].userid %>" />
+                        <button type="submit" id="delete">删除</button>
+                      </form>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+    <a href="userbase/useradd">添加用户</a>
+</body>
+</html>

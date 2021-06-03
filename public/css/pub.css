@@ -1,0 +1,153 @@
+*{
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    text-decoration: none;
+}
+
+h1{
+    padding-top: 7.5px;
+    padding-bottom: 10px;
+    color: #333;
+}
+
+.viewport{
+    width:100%;
+    min-width: 800px;
+}
+
+.outer{
+    width:60px;
+    height:60px;
+    /*background:pink;*/
+    /*!*box-shadow盒子阴影：水平偏移量，垂直偏移量，扩大程度，模糊程度，阴影颜色*!*/
+    /*-o-box-shadow:10px 10px 10px 10px purple;*/
+    /*-webkit-box-shadow:10px 10px 10px 10px purple;*/
+    /*-moz-box-shadow:10px 10px 10px 10px purple;*/
+    /*-ms-box-shadow:10px 10px 10px 10px purple;*/
+    /*边框属性：边框宽度，边框风格(double,solid,dashed),边框颜色*/
+    border:0px dashed white;
+    /*外间距属性:上下的外间距   左右的外间距*/
+    /* margin:10px auto; */
+    /*相对定位*/
+    position:relative;
+    /*过渡效果  过渡的属性，过渡需要的时间，过渡的方式(ios:ease平滑,安卓:linear线性)，过渡的延迟时间*/
+    transition:all 10s ease 0s;
+    transform:rotate(0deg);
+    /*把子元素转化成3D效果*/
+    transform-style:preserve-3d;
+    float: left;
+}
+.one{
+    width:30px;
+    height:30px;
+    background:rgb(255, 216, 44);
+    /*字体大小和颜色*/
+    font-size:30px;
+    color:white;
+    /*修改行高*/
+    line-height:30px;
+    /*文本左右居中属性*/
+    text-align:center;
+    /*绝对定位*/
+    position:absolute;
+    left:15px;
+    top:15px;   
+}
+.one a:link{
+    color: rgb(219, 120, 213);
+    text-decoration: none;
+}
+
+.qian{
+transform: translateZ(15px);
+}
+.hou{
+transform: translateZ(-15px)rotateY(180deg);
+}
+.you{
+transform: translateX(15px)rotateY(90deg);
+}
+.zuo{
+transform: translateX(-15px)rotateY(270deg);
+}
+.shang{
+transform: translateY(-15px)rotateX(270deg)rotateY(180deg);
+}
+.xia{
+transform: translateY(15px)rotateX(270deg)rotateY(0deg);
+}
+.outer:hover{
+transform: rotateY(360deg)rotateX(360deg)rotateZ(360deg);
+}
+
+.daohang{
+    width: 90%;
+    height: 30px;
+    margin-left: 3.5%;
+    /* border: 1px solid green; */
+}
+
+
+
+.daohang a{
+    color: #333;
+
+    text-decoration: none;
+}
+
+.daohang a:hover{
+    color: red;
+}
+
+.daohang table{
+    table-layout: fixed; width: 100%;text-align:center;border-collapse:collapse;
+}
+
+.daohangone{
+    width: 25%; background-color: rgb(182, 221, 243);
+}
+
+.daohangtwo{
+    width: 25%;background-color:rgb(78, 235, 201)
+}
+
+.body{
+    width: 90%;
+    height: 100px;
+    margin-left: 3.5%;
+    border: 1px solid red;
+    overflow-y:auto;
+    overflow-x:hidden;
+    margin-bottom: 20px;
+}
+
+.bodyone{
+    height: 100px;
+}
+
+.bodytwo{
+    height: 200px;
+}
+
+.bodyfive{
+    height: 70px;
+    border: none;
+    margin-bottom: 0;
+}
+
+.endpage{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 94%;
+    height: 20px;
+    border-top: 1px solid rgb(100, 100, 100);
+    color: rgba(114, 114, 114, 0.671);
+}
+
+.endpage a{
+    text-decoration: none;
+    color: rgba(216, 71, 245, 0.671);
+}
+

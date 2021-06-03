@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="/bookbase/savebook" method="post">
+        <table>
+        <tr>
+            <td>id:<%= id %> </td>
+            <td><input type="text" name="id" value="<%= id %>" hidden></td>
+        </tr>
+        <tr>
+            <td>图书封面img</td>
+            <td><input type="text" name="book_picture" value="<%= book_picture %>" hidden></td>
+        </tr>
+        <tr>
+            <td>书名</td>
+            <td><input type="text" name="bookname"></td>
+        </tr>
+        <tr>
+            <td>作者</td>
+            <td><input type="text" name="book_author" value="<%= book_author %>" hidden></td>
+        </tr>
+        <tr>
+            <td>价格</td>
+            <td><input type="text" name="price"></td>
+        </tr>
+        <tr>
+            <td>促销价格</td>
+            <td><input type="text" name="newprice"></td>
+        </tr>
+        <tr>
+            <td>重量（kg）</td>
+            <td><input type="text" name="weight" value="<%= weight %>" hidden></td>
+        </tr>
+        <tr>
+            <td>出版社</td>
+            <td><input type="text" name="publish" value="<%= publish %>" hidden></td>
+        </tr>
+        <tr>
+            <td>ISBN</td>
+            <td><input type="text" name="book_isbn" value="<%= book_isbn %>" hidden></td>
+        </tr>
+        <tr>
+            <td>版次</td>
+            <td><input type="text" name="edition" value="<%= edition %>" hidden></td>
+        </tr>
+        <tr>
+            <td>包装</td>
+            <td><input type="text" name="package" value="<%= package %>" hidden></td>
+        </tr>
+        <tr>
+            <td>开本</td>
+            <td><input type="text" name="format" value="<%= format %>" hidden></td>
+        </tr>
+        <tr>
+            <td>出版时间（20XX-XX-XX）</td>
+            <td><input type="text" name="publish_date" value="<%= publish_date %>" hidden></td>
+        </tr>
+        <tr>
+            <td>页数</td>
+            <td><input type="text" name="number_page" value="<%= number_page %>" hidden></td>
+        </tr>
+        <tr>
+            <td>产品特色（img地址）</td>
+            <td><input type="text" name="book_features" value="<%= book_features %>" hidden></td>
+        </tr>
+        <tr>
+            <td>编辑推荐</td>
+            <td><input type="text" name="book_edutorchoice" value="<%= book_edutorchoice %>" hidden></td>
+        </tr>
+        <tr>
+            <td>内容介绍</td>
+            <td><input type="text" name="book_introduction" value="<%= book_introduction %>" hidden></td>
+        </tr>
+        <tr>
+            <td>作者简介</td>
+            <td><input type="text" name="book_author" value="<%= book_author %>" hidden></td>
+        </tr>
+        <tr>
+            <td>精彩书评</td>
+            <td><textarea name="book_review"cols="30" rows="10" ></textarea></td>
+        </tr>
+        </table>
+        <button type="submit">更新</button>
+    </form>
+
+   
+</body>
+</html>
+
+<script>
+    window.onload=function()
+    {
+        var oTxt1=document.getElementsByName('bookname');
+        oTxt1.onfocus=function()
+            {
+            this.value='';
+            }
+        oTxt1.onblur=function()
+        {
+            if(this.value=='')
+            {
+            this.value= '<%= bookname %>';
+            }
+        }
+
+        var oTxt2=document.getElementsByName('price');
+        oTxt2.onfocus=function()
+            {
+            this.value='';
+            }
+        oTxt2.onblur=function()
+        {
+            if(this.value=='')
+            {
+            this.value= '<%= price %>';
+            }
+        }
+        
+        var oTxt3=document.getElementsByName('newprice');
+        oTxt3.onfocus=function()
+            {
+            this.value='';
+            }
+        oTxt3.onblur=function()
+        {
+            if(this.value=='')
+            {
+            this.value= '<%= newprice %>';
+            }
+        }
+        
+        var oTxt4=document.getElementsByName('book_review');
+        oTxt4.onfocus=function()
+            {
+            this.value='';
+            }
+        oTxt4.onblur=function()
+        {
+            if(this.value=='')
+            {
+            this.value= '<%= book_review %>';
+            }
+        }
+        
+    }
+</script>

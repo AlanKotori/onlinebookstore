@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/font.css">
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/index.css">
+    <script src="http://47.106.245.68/bs/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://47.106.245.68/bs/js/index.js"></script>
+</head>
+<body>
+    <h1>图书后台管理系统</h1>
+    <div class="layui-card-body layui-table-body layui-table-main">
+    <table class="layui-table layui-form">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>书名</th>
+                <th>作者</th>
+                <th>价格</th>
+                <th>促销价格</th>
+                <th>重量</th>
+                <th>出版社</th>
+                <th>ISBN</th>
+                <th>版次</th>
+                <th>包装</th>
+                <th>开本</th>
+                <th>出版时间</th>
+                <th>页数</th>
+                <!-- <th>产品特色（IMG地址）</th>
+                <th>编辑推荐</th>
+                <th>内容简介</th>
+                <th>作者简介</th>
+                <th>精彩书评</th> -->
+                <th>操作</th>
+                <!-- <th>操作2</th> -->
+                <th>操作2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0 ; i < data.length ; i ++){ %>
+            <tr>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].bookname %></td>
+                <td><%= data[i].author %></td>
+                <td><%= data[i].price %></td>
+                <td><%= data[i].newprice %></td>
+                <td><%= data[i].weight %></td>
+                <td><%= data[i].publish %></td>
+                <td><%= data[i].book_isbn %></td>
+                <td><%= data[i].edition %></td>
+                <td><%= data[i].package %></td>
+                <td><%= data[i].format %></td>
+                <td><%= data[i].publish_date %></td>
+                <td><%= data[i].number_page %></td>
+                <!-- <td><%= data[i].book_features %></td>
+                <td><%= data[i].book_edutorchoice %></td>
+                <td><%= data[i].book_introduction %></td>
+                <td><%= data[i].book_author %></td>
+                <td><%= data[i].book_review %></td> -->
+                <td>
+                    <form method="POST" action="/bookbase/del">
+                        <input type="hidden" name="del" value="<%= data[i].id %>" />
+                        <button type="submit" id="delete">删除</button>
+                      </form>
+                </td>
+                
+                <td>
+                    <form method="POST" action="/bookbase/book">
+                        <input type="hidden" name="id" value="<%= data[i].id %>" />
+                        <button type="submit" id="view">查看</button>
+                      </form>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+    <!-- <a href="bookbase/bookadd">添加数据</a> -->
+
+    <form action="/searchbook" method="get">
+        <input type="text" required name="keywords" value="" placeholder="请输入书名" />
+        <button type="submit">🔎</button>
+    </form>
+</body>
+</html>

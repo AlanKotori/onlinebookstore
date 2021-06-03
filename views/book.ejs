@@ -1,0 +1,179 @@
+  <!DOCTYPE html>
+    <html >
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>首页</title>
+     <link rel="stylesheet" type="text/css" href="/static/bs/book/css/normalize.css"/>
+     <script type="text/javascript" src="/static/bs/book/js/jquery-1.9.1.min.js"></script>
+     <script src="/static/bs/book/js/common.js" type="text/javascript" charset="utf-8"></script>
+       <script type="text/javascript">
+      $(document).ready(function(){
+          var showproduct = {
+              "boxid":"showbox",
+              "sumid":"showsum",
+              "boxw":400,//宽度,该版本中请把宽高填写成一样
+              "boxh":400,//高度,该版本中请把宽高填写成一样
+              "sumw":60,//列表每个宽度,该版本中请把宽高填写成一样
+              "sumh":60,//列表每个高度,该版本中请把宽高填写成一样
+              "sumi":7,//列表间隔
+              "sums":5,//列表显示个数
+              "sumsel":"sel",
+              "sumborder":1,//列表边框，没有边框填写0，边框在css中修改
+              "lastid":"showlast",
+              "nextid":"shownext"
+              };//参数定义	  
+         $.ljsGlasses.pcGlasses(showproduct);//方法调用，务必在加载完后执行
+      });
+    </script>
+    <link rel="stylesheet" href="/static/bs/head/css/bootstrap.min.css"> 
+    <style>
+        .btnnew{
+            text-align: center;
+            border-radius: 3px;
+            display: inline-block;
+            padding: 10px;
+        }
+    </style>
+    </head>
+    <body>
+     <div class="showall">
+                        <!--left -->
+                        <div class="showbot">
+                        <div id="showbox">
+                            <img src="<%= data[0].book_picture %>" width="400" height="400" />
+
+                        </div>
+                        <!--展示图片盒子-->
+                            </div>
+                            <!--conet -->
+                            <div class="tb-property">
+                                <div class="tr-nobdr">
+                                    <h3><%= data[0].bookname %></h3>
+                                </div>
+                                    <div class="txt">
+                                        <span class="nowprice">￥<a href=""><%= data[0].newprice %></a></span>
+                                        <div class="cumulative">
+                                            <span class="number ty1"><%= data[0].publish %></span>
+                                            
+                                        </div>
+                                    </div>
+                                <div class="txt-h">
+                                    <span class="tex-o">作者</span>
+                                    <ul class="glist" id="glist" data-monitor="goodsdetails_fenlei_click">
+                                        <li><a title="作者" href=""><%= data[0].author %></a></li>
+                                    </ul>
+                                </div>
+                                
+                                
+                                <div class="guarantee">
+                                    <span>商品重量<%= data[0].weight %></span>
+                                </div>
+                                <% if(userid!='') {%> 
+                                <div class="nobdr-btns">
+                                    <form method="POST" action="/buying/savegoodsfromcart">
+                                        <input type="hidden" name="bookid" value="<%= data[0].id %>" />
+                                        <input type="hidden" name="userid" value="<%= userid %>" />
+                                        <button type="submit" id="delete" class="btnnew btn-success">购买</button>
+                                    </form>
+                                </div>
+                                <% } %> 
+                            </div>
+                            
+                        </div>                
+                        </div>
+                    </div>      
+                    
+    <!-- 商品介紹 -->                
+                        <script>
+                        var detail = document.querySelector('.detail');
+                        var origOffsetY = detail.offsetTop;
+                        function onScroll(e) {
+                        window.scrollY >= origOffsetY ? detail.classList.add('sticky') :
+                        detail.classList.remove('sticky');
+                        }
+                        document.addEventListener('scroll', onScroll); 
+                        </script>
+                        <div class="detail">
+                            <div class="active_tab" id="outer">
+                                                        <ul class="act_title_left" id="tab">
+                                                            <li class="act_active">
+                                                                <a href="#">书籍信息</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">编辑推荐</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">作者简介</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">内容简介</a>
+                                                            </li>
+                                                        </ul>
+                                                        
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                    <div id="content" class="active_list"> 
+                                                        <!--书籍信息-->
+                                                        <div id="ui-a" class="ui-a">
+                                                            <ul style="display:block;">
+                                                            <li>书籍名称：<%= data[0].bookname %></li>
+                                                            <li>书籍编号：ECS001983</li>
+                                                            <li>作者：<%= data[0].author %></li>
+                                                            <li>出版时间：<%= data[0].publish_date %></li>
+                                                            <li>原价：<%= data[0].price %></li>
+                                                            <li>重量：<%= data[0].weight %></li>
+                                                            <li>ISBN：<%= data[0].book_isbn %></li>
+                                                            <li>页数：<%= data[0].number_page %></li>
+                                                            <li>出版社：<%= data[0].publish %> </li>
+                                                        
+                                                            <li><img src="<%= data[0].book_features %>"/></li>
+                                                            </ul>
+                                                       </div>
+                                                       <!--编辑推荐-->
+                                                            <div id="bit" class="bit">
+                                                            <ul style="display:none;">
+                                                                <p>书籍名称：<%= data[0].bookname %></p>
+                                                                <p><%= data[0].book_introduction %></p>          
+                                                           </ul>
+                                                           </div>   
+                                                        <!--作者简介-->      
+                                                        <div id="ui-c" class="ui-c">
+                                                             <ul style="display:none;">
+                                                                <p>书籍名称：<%= data[0].bookname %></p>
+                                                                <p><%= data[0].book_author %></p>
+                                                             </ul>
+                                                        </div>
+                                                     <!--精彩书评-->
+                                                     <div id="uic" class="uic">
+                                                             <ul style="display:none;">
+                                                                <p>书籍名称：<%= data[0].bookname %></p>
+                                                                <p><%= data[0].book_review %></p>
+                                                             </ul>
+                                                        </div>
+                                                    </div>
+                                                    <script>
+                                                        $(function(){
+                                                            window.onload = function()
+                                                            {
+                                                                var $li = $('#tab li');
+                                                                var $ul = $('#content ul');
+                                                                            
+                                                                $li.mouseover(function(){
+                                                                    var $this = $(this);
+                                                                    var $t = $this.index();
+                                                                    $li.removeClass();
+                                                                    $this.addClass('act_active');
+                                                                    $ul.css('display','none');
+                                                                    $ul.eq($t).css('display','block');
+                                                                })
+                                                            }
+                                                        });  
+                                                    </script>
+                        </div>
+                
+                    
+    </body>
+    </html>
+    
+
+

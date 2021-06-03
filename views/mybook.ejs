@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/font.css">
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/index.css">
+    <script src="http://47.106.245.68/bs/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://47.106.245.68/bs/js/index.js"></script>
+</head>
+<body>
+    <h1>用户<%= user[0].username %>的订单总览页面</h1>
+    
+    <div class="layui-card-body layui-table-body layui-table-main">
+    <form class="form-horizontal" method="POST" action="/main">
+        <input type="hidden" name='userid' value="<%= user[0].userid %>" />
+        <button type="submit" class="btn btn-primary"  style="width: 100px;">返回主页</button>
+    </form>
+    <h2>我的订单</h2>
+    <table class="layui-table layui-form" method="POST" action="/">
+        <thead>
+            <tr>
+                <th>订单ID</th>
+                <th>书名</th>
+                <th>购买时间</th>
+                <th>地址</th>
+                <!-- <th>操作2</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0 ; i < buying.length ; i ++){ %>
+            <tr>
+                <td><%= buying[i].pageid %></td>
+                <td><%= buying[i].bookname %></td>
+                <td><%= buying[i].buy_date %></td>
+                <td><%= buying[i].buy_where %></td>
+            
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <h2>我的发货单</h2>
+    <table class="layui-table layui-form">
+        <thead>
+            <tr>
+                <th>订单ID</th>
+                <th>书名</th>
+                <th>购买时间</th>
+                <th>地址</th>
+                <th>操作</th>
+                <!-- <th>操作2</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0 ; i < buysend.length ; i ++){ %>
+            <tr>
+                <td><%= buysend[i].pageid %></td>
+                <td><%= buysend[i].bookname %></td>
+                <td><%= buysend[i].buy_date %></td>
+                <td><%= buysend[i].buy_where %></td>
+                <td>
+                    <form method="POST" action="/buying/userback">
+                        <input type="hidden" name='pageid' value="<%= buysend[i].pageid %>" />
+                        <input type="hidden" name='userid' value="<%= user[0].userid %>" />
+                        <button type="submit" id="delete">退货</button>
+                      </form>
+                </td>
+            
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <h2>我的退货单</h2>
+    <table class="layui-table layui-form">
+        <thead>
+            <tr>
+                <th>退货单ID</th>
+                <th>书名</th>
+                <th>退货时间</th>
+                <th>地址</th>
+                <th>退货理由</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0 ; i < buyback.length ; i ++){ %>
+            <tr>
+                <td><%= buyback[i].pageid %></td>
+                <td><%= buyback[i].bookname %></td>
+                <td><%= buyback[i].buy_date %></td>
+                <td><%= buyback[i].buy_where %></td>
+                <td><%= buyback[i].back_why %></td>
+            
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <h2>我的退货历史</h2>
+    <table class="layui-table layui-form">
+        <thead>
+            <tr>
+                <th>退货单ID</th>
+                <th>书名</th>
+                <th>退货时间</th>
+                <th>地址</th>
+                <th>退货理由</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0 ; i < buybackhistory.length ; i ++){ %>
+            <tr>
+                <td><%= buybackhistory[i].pageid %></td>
+                <td><%= buybackhistory[i].bookname %></td>
+                <td><%= buybackhistory[i].buy_date %></td>
+                <td><%= buybackhistory[i].buy_where %></td>
+                <td><%= buybackhistory[i].back_why %></td>
+            
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <h2>我的购物车</h2>
+    <table class="layui-table layui-form">
+        <thead>
+            <tr>
+                <th>购买用户ID</th>
+                <th>书名</th>
+                <th>价格</th>
+                <th>操作</th>
+                <th>操作2</th>
+             
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0 ; i < cart.length ; i ++){ %>
+            <tr>
+                <td><%= cart[i].userid %></td>
+                <td><%= cart[i].bookname %></td>
+                <td><%= cart[i].buy_money %></td>
+                <td>
+                    <form method="POST" action="/cart/delcartfrommybook">
+                        <input type="hidden" name="userid" value="<%= user[0].userid %>" />
+                        <input type="hidden" name='del' value="<%= cart[i]._id %>" />
+                        <button type="submit" id="delete">从购物车移除</button>
+                      </form>
+                </td>
+                <td>
+                    <form method="POST" action="/buying/savegoodsfromcart">
+                        <input type="hidden" name="bookid" value="<%= cart[i].book_id %>" />
+                        <input type="hidden" name="userid" value="<%= user[0].userid %>" />
+                        <input type="hidden" name="cartid" value="<%= cart[i].cartid %>" />
+                        <button type="submit" id="delete">购买</button>
+                      </form>
+                </td>
+            </tr>
+
+            
+            <% } %>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

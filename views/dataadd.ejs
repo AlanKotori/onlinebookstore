@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=S, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    
+    <form action="/database/saveblog" method="post">
+        <table>
+        <tr>
+            <td>id</td>
+            <td><input type="text" name="id"></td>
+        </tr>
+        <tr>
+            <td>title</td>
+            <td><input type="text" name="title"></td>
+        </tr>
+        <tr>
+            <td>创建日期</td>
+            <td><input type="datetime-local" name="create_date"></td>
+        </tr>
+        <tr>
+            <td>最后创建日期</td>
+            <td><input type="datetime-local" name="last_date"></td>
+        </tr>
+        <tr>
+            <td>标签</td>
+            <td><input type="text" name="tag"></td>
+        </tr>
+        <tr>
+            <td>访问人数</td>
+            <td><input type="text" name="visitor"></td>
+        </tr>
+        <tr>
+            <td>文章内容</td>
+            <td><textarea name="content"cols="30" rows="10"></textarea></td>
+        </tr>
+        </table>
+        <button type="submit">确定</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="/static/bs/head/font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
+    <link rel="stylesheet" href="/static/bs/head/css/bootstrap.min.css">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" href="/static/bs/head/css/tooplate-style.css">  
+    <script>
+        function formSubmit(){
+        document.loginInfo.submit();
+        }
+        </script>
+</head>
+<body>
+
+    <div class="adcenter"><script src="http://www.cssmoban.com/include/new/ggad2_728x90.js"></script></div>
+        
+        <div class="container">
+        <header class="tm-site-header">
+        <h1 class="tm-site-name">-----</h1>
+        <p class="tm-site-description">毕业设计网上书店</p>
+        
+        <nav class="navbar navbar-expand-md tm-main-nav-container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
+                <ul class="nav nav-fill tm-main-nav-ul">
+                    <li class="nav-item"><a class="nav-link active" href="/">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">登陆</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/join">注册</a></li>
+                    <li class="nav-item"> <form action="/searchbook" method="get">
+                        <input class="nav-link" type="text" required name="keywords" value="" placeholder="请输入书名" />
+                        
+                        
+                    </li>
+                    <li class="nav-item">
+                        <button type="submit" class="nav-link">🔎</button>
+                    </li>
+                    </form>
+                </ul>
+            </div>
+        </nav>
+        
+            </header>
+            
+        <div class="tm-main-content">
+        <section class="tm-margin-b-l">
+                
+        <a href="/login"><header>
+            <h2 class="tm-main-title">欢迎您进入网上书店请点击登陆</h2>    
+        </header></a>
+                    
+                   
+        <div class="tm-gallery">
+        <div class="row">
+                
+        <% for(let i = 0 ; i < data2.length ; i ++){ %>
+                    
+        <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item" onclick="formSubmit()">
+            
+            <form method="POST" action="/bookbase/book" name="loginInfo">
+            
+            <input type="hidden" name="id" value="<%= data2[i].id %>" />
+            <div class="tm-gallery-item-overlay" onclick="formSubmit()">
+                <img src="<%= data2[i].book_picture %>" alt="Image" class="img-fluid tm-img-center" onclick="formSubmit()" name="img">
+            </div>
+            
+            </form>
+
+            <p class="tm-figcaption"><%= data2[i].bookname %>
+                
+                <form method="POST" action="/bookbase/book" style="width: 50%;float: left;">
+                    <input type="hidden" name="id" value="<%= data2[i].id %>" />
+                    <button type="submit" id="view">查看</button>
+                </form>
+            </p>
+        </figure> 
+        
+                <% } %> 
+
+            </div>   
+        </div>
+        
+                </section>
+
+                <section class="media tm-highlight tm-highlight-w-icon"style="overflow-y:scroll;">
+
+                    <div class="media-body" >
+                        <header>
+                            <h3>欢迎光临网上书店</h3>
+                        </header>
+                        
+                    </div>                    
+                </section>
+            </div>
+
+              
+        </div>
+        
+        <!-- load JS files -->
+        <script src="/static/bs/head/js/jquery-1.11.3.min.js"></script>         <!-- jQuery (https://jquery.com/download/) -->
+        <script src="/static/bs/head/js/popper.min.js"></script>                <!-- Popper (https://popper.js.org/) -->
+        <script src="/static/bs/head/js/bootstrap.min.js"></script>             <!-- Bootstrap (https://getbootstrap.com/) -->
+        <script>     
+       
+            $(document).ready(function(){
+                
+                // Update the current year in copyright
+                $('.tm-current-year').text(new Date().getFullYear());
+
+            });
+
+        </script>             
+
+
+
+
+
+    
+</body>
+</html>

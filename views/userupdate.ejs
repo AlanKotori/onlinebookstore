@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/font.css">
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/index.css">
+    <script src="http://47.106.245.68/bs/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://47.106.245.68/bs/js/index.js"></script>
+</head>
+<body>
+    <h1>用户页面</h1>
+    <div class="layui-card-body layui-table-body layui-table-main">
+    <table  class="layui-table layui-form"> 
+        <thead>
+            <tr>
+                <th>用户id</th>
+                <th>用户邮箱</th>
+                <th>用户名</th>
+                <th>用户密码</th>
+                <th>用户地址</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0 ; i < data.length ; i ++){ %>
+                <tr>
+                <td><%= data[i].userid %>
+                </td>
+                <td><%= data[i].usermail %>
+                </td>
+                <td><%= data[i].username %>
+                    <form method="POST" action="/userbase/update">
+                        <input type="hidden" name="_id" value="<%= data[i]._id %>" />
+                        <input type="hidden" name="userid" value="<%= data[i].userid %>" />
+                        <input type="hidden" name="usermail" value="<%= data[i].usermail %>" />
+                        <input type="hidden" name="userpasswd" value="<%= data[i].userpasswd %>" />
+                        <input type="hidden" name="userwhere" value="<%= data[i].userwhere %>" />
+                        <input type="text" name="username">
+                        <button type="submit" id="delete">更新</button>
+                      </form>
+                </td>
+
+                <td><%= data[i].userpasswd %>
+                    <form method="POST" action="/userbase/update">
+                        <input type="hidden" name="_id" value="<%= data[i]._id %>" />
+                        <input type="hidden" name="userid" value="<%= data[i].userid %>" />
+                        <input type="hidden" name="username" value="<%= data[i].username %>" />
+                        <input type="hidden" name="usermail" value="<%= data[i].usermail %>" />
+                        <input type="hidden" name="userwhere" value="<%= data[i].userwhere %>" />
+                        <input type="text" name="userpasswd">
+                        <button type="submit" id="delete">更新</button>
+                      </form>
+                </td>
+
+                <td><%= data[i].userwhere %>
+                    <form method="POST" action="/userbase/update">
+                        <input type="hidden" name="_id" value="<%= data[i]._id %>" />
+                        <input type="hidden" name="userid" value="<%= data[i].userid %>" />
+                        <input type="hidden" name="username" value="<%= data[i].username %>" />
+                        <input type="hidden" name="userpasswd" value="<%= data[i].userpasswd %>" />
+                        <input type="hidden" name="usermail" value="<%= data[i].usermail %>" />
+                        <input type="text" name="userwhere">
+                        <button type="submit" id="delete">更新</button>
+                      </form>
+                </td>
+
+
+
+                <td>
+                    <p>如需删除请联系管理员</p>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table></div>
+    
+</body>
+</html>

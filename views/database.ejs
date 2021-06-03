@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>个人博客后台管理系统</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>标题</th>
+                <th>创建时间</th>
+                <th>最后修改时间</th>
+                <th>访问人数</th>
+                <th>标签</th>
+                <th>内容</th>
+                <th>操作</th>
+                <th>操作2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0 ; i < data.length ; i ++){ %>
+            <tr>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].title %></td>
+                <td><%= data[i].create_date %></td>
+                <td><%= data[i].last_date %></td>
+                <td><%= data[i].visitor %></td>
+                <td><%= data[i].tag %></td>
+                <td><%= data[i].content %></td>
+                <td>
+                    <form method="POST" action="/database/del">
+                        <input type="hidden" name="del" value="<%= data[i].title %>" />
+                        <button type="submit" id="delete">删除</button>
+                      </form>
+                </td>
+                <td>
+                    <form action="/database/update" method="post">
+                        <input type="hidden" name="id" value="<%= data[i].id %>" />
+                        <input type="hidden" name="title" value="<%= data[i].title %>" />
+                        <input type="hidden" name="create_date" value="<%= data[i].create_date %>" />
+                        <input type="hidden" name="last_date" value="<%= data[i].last_date %>" />
+                        <input type="hidden" name="visitor" value="<%= data[i].visitor %>" />
+                        <input type="hidden" name="tag" value="<%= data[i].tag %>" />
+                        <input type="hidden" name="content" value="<%= data[i].content %>" />
+                        <button type="submit" id="update">更新</button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <a href="database/dataadd">添加数据</a>
+</body>
+</html>

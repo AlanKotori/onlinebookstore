@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=S, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <style>
+
+        .container {
+            margin-top: 15%;
+            width: 50%;
+        }
+    
+        .btn-primary {
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+    
+        .form-control {
+            margin-bottom: 4px;
+        }
+    
+    </style>
+</head>
+<body>
+    <form action="/bookbase/savebook" method="post">
+        <div class="container">
+            <label for="exampleInputEmail1">id</label>
+            <input type="text" class="form-control" name="id" placeholder="书籍ID" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">图书封面img</label>
+            <input type="text" class="form-control" name="book_picture" placeholder="图片地址" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">书名</label>
+            <input type="text" class="form-control" name="bookname" placeholder="书名" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">作者</label>
+            <input type="text" class="form-control" name="author" placeholder="作者" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">价格</label>
+            <input type="text" class="form-control" name="price" placeholder="价格" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">促销价格</label>
+            <input type="text" class="form-control" name="newprice" placeholder="促销价格" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">重量（kg）</label>
+            <input type="text" class="form-control" name="weight" placeholder="重量" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">出版社</label>
+            <input type="text" class="form-control" name="publish" placeholder="出版社" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">ISBN</label>
+            <input type="text" class="form-control" name="book_isbn" placeholder="ISBN" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">版次</label>
+            <input type="text" class="form-control" name="edition" placeholder="版次" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">包装</label>
+            <input type="text" class="form-control" name="package" placeholder="包装" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">开本</label>
+            <input type="text" class="form-control" name="format" placeholder="开本" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">出版时间（20XX-XX-XX）</label>
+            <input type="text" class="form-control" name="publish_date" placeholder="20XX-XX-XX" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">页数</label>
+            <input type="text" class="form-control" name="number_page" placeholder="页数" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">产品特色（img地址）</label>
+            <input type="text" class="form-control" name="book_features" placeholder="产品特色（img地址）" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">编辑推荐</label>
+            <textarea class="form-control" name="book_edutorchoice"cols="30" rows="10"></textarea>
+            <label for="exampleInputEmail1">内容介绍</label>
+            <textarea class="form-control" name="book_introduction" cols="30" rows="10"></textarea>
+            <label for="exampleInputEmail1">作者简介</label>
+            <textarea class="form-control" name="book_author"cols="30" rows="10"></textarea>
+            <label for="exampleInputEmail1">精彩书评</label>
+            <textarea class="form-control" name="book_review"cols="30" rows="10"></textarea>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">添加图书</button>
+        </div>
+        </form>
+</body>
+</html>

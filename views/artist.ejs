@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="static/css/pub.css">
+</head>
+<body>
+    <div class="header">
+        <div class="outer">
+            <div class="one qian"><a href="">2</a></div>
+            <div class="one hou"><a href="">6</a></div>
+            <div class="one zuo"><a href="/about">1</a></div>
+            <div class="one you"><a href="">5</a></div>
+            <div class="one shang"><a href="">3</a></div>
+            <div class="one xia"><a href="/talk">4</a></div>
+        </div>
+        <h1><%= title %></h1>
+    </div>
+    <div class="daohang">
+        <table>
+            <tr>
+                <td class="daohangone"><a href="/">首页</a></td>
+                <td class="daohangtwo"><a href="/artist">文章</a></td>
+                <td class="daohangone"><a href="/about">关于</a></td>
+                <td class="daohangtwo"><a href="/talk">与我联系</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>标题</th>
+                <th>创建时间</th>
+                <th>最后修改时间</th>
+                <th>访问人数</th>
+                <th>标签</th>
+                <th>访问</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0 ; i < data.length ; i ++){ %>
+            <tr>
+                <td><%= data[i].title %></td>
+                <td><%= data[i].create_date %></td>
+                <td><%= data[i].last_date %></td>
+                <td><%= data[i].visitor %></td>
+                <td><%= data[i].tag %></td>
+                <td>此处是访问链接</td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <div class="endpage">
+        <center>没有版权，随便侵权</center>
+    </div>
+</body>
+</html>

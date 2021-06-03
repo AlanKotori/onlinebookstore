@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <style>
+
+        .container {
+            margin-top: 15%;
+            width: 35%;
+        }
+    
+        .btn-primary {
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+    
+        .form-control {
+            margin-bottom: 4px;
+        }
+    
+    </style>
+</head>
+<body>
+    <form action="/userbase/saveur" method="post">
+        <div class="container">
+            <label for="exampleInputEmail1">用户账号</label>
+            <input type="text" class="form-control" name="userid" placeholder="用户账号" id="exampleInputEmail1" onkeyup="value=value.replace(/[^1234567890-]+/g,'')">
+            <p>(用户账号是用户的唯一标识，且为纯数字)</p>
+            <label for="exampleInputEmail1">用户名</label>
+            <input type="text" class="form-control" name="username" placeholder="用户名" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">用户密码</label>
+            <input type="password" class="form-control" name="userpasswd" placeholder="用户密码" id="exampleInputEmail1">
+            <label for="exampleInputEmail1">用户邮箱</label>
+            <input type="text" class="form-control" name="usermail" placeholder="用户邮箱" id="usermail">
+            <label for="exampleInputEmail1">用户地址</label>
+            <input type="text" class="form-control" name="userwhere" placeholder="用户地址" id="exampleInputEmail1">
+            <div class="radio">
+                <label>
+                  <input type="radio" name="userwho" id="optionsRadios1" value="0" checked>
+                  管理员
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="userwho" id="optionsRadios2" value="1" checked>
+                  高级用户
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="userwho" id="optionsRadios3" value="2" checked>
+                  普通用户
+                </label>
+              </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+        </div>
+        
+    </form>
+</body>
+</html>

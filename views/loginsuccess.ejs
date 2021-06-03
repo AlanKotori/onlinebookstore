@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="/static/bs/head/font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
+    <link rel="stylesheet" href="/static/bs/head/css/bootstrap.min.css">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" href="/static/bs/head/css/tooplate-style.css">  
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/font.css">
+    <link rel="stylesheet" href="http://47.106.245.68/bs/css/index.css">
+    <script>
+        function formSubmit(){
+        document.loginInfo.submit();
+        }
+        </script>
+    <style>
+        .btnnew{
+            text-align: center;
+            border-radius: 3px;
+            display: inline-block;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="adcenter"><script src="http://www.cssmoban.com/include/new/ggad2_728x90.js"></script></div>
+        
+        <div class="container">
+            <header class="tm-site-header">
+                <h1 class="tm-site-name">TianGang</h1>
+                <p class="tm-site-description">毕业设计网上书店</p>
+                
+                <nav class="navbar navbar-expand-md tm-main-nav-container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
+                        <ul class="nav nav-fill tm-main-nav-ul">
+                            <li><form class="form-horizontal" method="POST" action="/main">
+                                <input type="hidden" name='userid' value="<%= user[0].userid %>" />
+                                <button type="submit" class="nav-link btnnew btn-success"  style="width: 100px;">主页</button>
+                            </form></li>
+                            <li class="nav-item"><a class="nav-link" href="/login">退出</a></li>
+                            <li class="nav-item">
+                                <form method="POST" action="/userbase/userupdate" >
+                                    <input type="hidden" name="userid" value="<%= user[0].userid %>" />
+                                    <button type="submit" id="view" class="nav-link btnnew btn-info">账号管理</button>
+                                </form>
+                            </li>
+                            <li class="nav-item">
+                                <form method="POST" action="/mybook" >
+                                    <input type="hidden" name="userid" value="<%= user[0].userid %>" />
+                                    <button type="submit" id="view" class="nav-link btnnew btn-info">订单中心</button>
+                                </form>
+                            </li>
+                            <li class="nav-item"> 
+                                <form action="/searchbook/buying" method="get">
+                                <input class="nav-link" type="text" required name="keywords" value="" placeholder="请输入书名" />
+                                <input class="nav-link" type="hidden" required name="id" value="<%= user[0].userid  %>" name='id'>
+                                
+                            </li>
+                            <li class="nav-item">
+                                <button type="submit" class="nav-link">🔎</button>
+                            </li>
+                            </form>
+                        </ul>
+                    </div>
+                </nav>
+                
+            </header>
+            
+            <div class="tm-main-content">
+                <section class="tm-margin-b-l">
+                    <header>
+                        <h2 class="tm-main-title">欢迎<%= user[0].username  %>进入网上书店</h2>    
+                    </header>
+                    
+                    
+                   
+
+                        <div class="media-body" >
+                            
+                            <table class="layui-table layui-form">
+                                <thead>
+                                    <tr>
+                                        <th>登陆账号</th>
+                                        <th>消费总金额</th>
+                                        <th>未发货的图书(本数)</th>
+                                        <th>未发货的图书价格</th>
+                                        <th>等待退款的金额</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>
+                        
+                                        <td><%= user[0].userid  %></td>             
+                                        <td><%= totelbuymoney  %>元</td>
+                                        <td><%= buysend.length %>本</td>
+                                        <td><%= totelmoney  %>元</td>
+                                        <td><%= totelbackmoney  %>元</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>                    
+                   
+                    <div class="tm-gallery">
+                        <div class="row">
+                            
+                            <% for(let i = 0 ; i < bookpage.length ; i ++){ %>
+                                
+                            <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item" onclick="formSubmit()">
+                               
+                                    <form method="POST" action="/bookbase/book" name="loginInfo">
+                                    
+                                    <input type="hidden" name="userid" value="<%= user[0].userid %> ">
+                                    <input type="hidden" name="id" value="<%= bookpage[i].id %>" />
+                                    <div class="tm-gallery-item-overlay" onclick="formSubmit()">
+                                        <img src="<%= bookpage[i].book_picture %>" alt="Image" class="img-fluid tm-img-center" onclick="formSubmit()" name="img">
+                                    </div>
+                                    
+                                    </form>
+
+                                    <p class="tm-figcaption"><%= bookpage[i].bookname %>
+                                        <form method="POST" action="/buying/savegoodsfromcart" style="width: 50%;float: left;">
+                                            <input type="hidden" name="userid" value="<%= user[0].userid %>" />
+                                            <input type="hidden" name="bookid" value="<%= bookpage[i].id %>" />
+                                            <button type="submit" id="create" class="btnnew btn-success">购买</button>
+                                        </form>
+                                        <form method="POST" action="/cart/addcart" style="width: 50%;float: left;">
+                                            <input type="hidden" name="userid" value="<%= user[0].userid %>" />
+                                            <input type="hidden" name="bookname" value="<%= bookpage[i].bookname %>" />
+                                            <input type="hidden" name="buy_date" value='<%=bookpage[i].publish_date%>' />
+                                            <input type="hidden" name="bookid" value="<%= bookpage[i].id %>" />
+                                            <input type="hidden" name="buy_where" value="<%= user[0].userwhere %>" />
+                                            <input type="hidden" name="buy_money" value="<%= bookpage[i].newprice %>" />
+                                            <button type="submit" id="create" class="btnnew btn-warning">添加到购物车</button>
+                                        </form>
+                                        <form method="POST" action="/bookbase/book" style="width: 50%;float: left;">
+                                            <input type="hidden" name="id" value="<%= bookpage[i].id %>" />
+                                            <input type="hidden" name="userid" value="<%= user[0].userid %>" />
+                                            <button type="submit" id="view" class="btnnew btn-info">查看</button>
+                                        </form>
+                                    </p>
+                            </figure> 
+                            
+                            <% } %> 
+
+                        </div>   
+                    </div>
+                    
+                </section>
+
+                <section class="media tm-highlight tm-highlight-w-icon"style="overflow-y:scroll;">
+
+                    <div class="media-body" >
+                        <header>
+                            <h3>购物车页面</h3>
+                        </header>
+                        <table class="layui-table layui-form">
+                            <thead>
+                                <tr>
+                        
+                                    <th>书名</th>
+                                    
+                                    <th>价格</th>
+                                    <th>操作</th>
+                                    <th>操作2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(let i = 0 ; i < cart.length ; i ++){ %>
+                                <tr>
+                    
+                                    <td><%= cart[i].bookname %></td>
+                                    
+                                    <td><%= cart[i].buy_money %></td>
+                                    
+                                    <td>
+                                        <form method="POST" action="/cart/delcart">
+                                            <input type="hidden" name="userid" value="<%= user[0].userid %>" />
+                                            <input type="hidden" name='del' value="<%= cart[i]._id %>" />
+                                            <button type="submit" id="delete" class="btnnew btn-danger">移除购物车</button>
+                                          </form>
+                                    </td>
+                                    <td>
+                                        <form method="POST" action="/buying/savegoodsfromcart">
+                                            <input type="hidden" name="bookid" value="<%= cart[i].book_id %>" />
+                                            <input type="hidden" name="userid" value="<%= user[0].userid %>" />
+                                            <input type="hidden" name="cartid" value="<%= cart[i].cartid %>" />
+                                            <button type="submit" id="delete" class="btnnew btn-success">购买</button>
+                                        </form>
+                                    </td>
+                                
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>                    
+                </section>
+            </div>
+
+              
+        </div>
+        
+        <!-- load JS files -->
+        <script src="/static/bs/head/js/jquery-1.11.3.min.js"></script>         <!-- jQuery (https://jquery.com/download/) -->
+        <script src="/static/bs/head/js/popper.min.js"></script>                <!-- Popper (https://popper.js.org/) -->
+        <script src="/static/bs/head/js/bootstrap.min.js"></script>             <!-- Bootstrap (https://getbootstrap.com/) -->
+        <script>     
+       
+            $(document).ready(function(){
+                
+                // Update the current year in copyright
+                $('.tm-current-year').text(new Date().getFullYear());
+
+            });
+
+        </script>             
+
+
+
+
+
+    
+</body>
+</html>
+

@@ -1,0 +1,83 @@
+.head { 
+    width: auto;
+    height: 100px;
+    /* background-color: antiquewhite; */
+}
+
+.head_logo{
+    width: 20%;
+    height: 100%;
+    /* background-color: aqua; */
+    float: left;
+}
+.head_logo img{
+    width: 100%;
+    height: 100%;
+}
+
+.head_login{
+    width: 10%;
+    height: 100%;
+    /* background-color: aqua; */
+    float: right;
+}
+
+.body{
+    width: auto;
+    height: auto;
+    /* background-color: blue; */
+}
+
+.body_up{
+    width: auto;
+    height: 300px;
+    /* background-color: blueviolet; */
+}
+
+.body_up img{
+    width: 20%;
+    height: 100%;
+    /* background-color: burlywood; */
+    float: left;
+}
+
+.body_up_msg{
+    width: 30%;
+    height: 100%;
+    /* background-color: chocolate; */
+    padding-left: 3%;
+    padding-right: 3%;
+    float: left;
+}
+
+.body_features img{
+    width: 100%;
+    height: auto;
+}
+
+.end { 
+    width: auto;
+    height: 100px;
+    /* background-color: antiquewhite; */
+}
+
+.body_book_edutorchoice{
+    width: 75%;
+    height: auto;
+    padding-left: 15%;
+}
+.body_book_introduction{
+    width: 75%;
+    height: auto;
+    padding-left: 15%;
+}
+.body_book_author{
+    width: 75%;
+    height: auto;
+    padding-left: 15%;
+}
+.body_book_review{
+    width: 75%;
+    height: auto;
+    padding-left: 15%;
+}
